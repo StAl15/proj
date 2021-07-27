@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.naturama.fragments.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/places"
+        android:name="com.example.naturama.fragments.Places"
+        android:label="fragment_places"
+        tools:layout="@layout/fragment_places" />
+    <fragment
+        android:id="@+id/stats"
+        android:name="com.example.naturama.fragments.Stats"
+        android:label="fragment_stats"
+        tools:layout="@layout/fragment_stats" />
+    <fragment
+        android:id="@+id/sorting"
+        android:name="com.example.naturama.fragments.Sorting"
+        android:label="fragment_sorting"
+        tools:layout="@layout/fragment_sorting" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.naturama.fragments.Settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
