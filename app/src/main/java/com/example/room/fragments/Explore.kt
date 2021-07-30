@@ -60,7 +60,7 @@ class Explore : Fragment() {
     private fun updateItem(){
         //create stats object
         val updateStats = StatsRoom(
-            0,
+            1,
             20,
             20,
             22
