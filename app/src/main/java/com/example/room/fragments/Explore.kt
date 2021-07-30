@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.room.R
 import com.example.room.data.StatsRoom
@@ -26,7 +27,7 @@ class Explore : Fragment() {
         val view = inflater.inflate(R.layout.fragment_explore, container, false)
 
         val verifyRoom: Button = view.findViewById(R.id.verifyRoom)
-
+        mStatsViewModel = ViewModelProvider(this).get(StatsViewModel::class.java)
         verifyRoom.setOnClickListener{
             try {
                 insertDataToDatabase()
@@ -44,7 +45,7 @@ class Explore : Fragment() {
 
         //create user object
         val stats = StatsRoom(
-            0,
+            1,
             10,
             10 ,
             12)
