@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 //методы для работы с данными таблицы
 
@@ -15,7 +16,8 @@ interface StatsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addInfoStats(statsRoom: Stats_Room)
 
-    //reade
+    //read
     @Query("SELECT * FROM stats_user")
     fun readAllData(): LiveData<List<Stats_Room>>
+
 }

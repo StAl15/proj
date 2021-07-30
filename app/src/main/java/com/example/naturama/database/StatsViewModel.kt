@@ -8,23 +8,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 //передаёт данные в ui и их изменения. Иначе говоря просто связь между Repository и UI
-class StatsViewModel(application: Application): AndroidViewModel(application){
+class StatsViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val readAllData: LiveData<List<Stats_Room>>
+    val readAllData: LiveData<List<Stats_Room>>
     private val repository: StatsRepository
 
     init {
-        val statsDao = StatsDatabase.getDatabase(application).statsDao()
+        //val statsDao = StatsDatabase.getDatabase(application).statsDao()
+        var db: StatsDatabase? = App().database
+        var statsDao: StatsDao = db!!.statsDao
         repository = StatsRepository(statsDao)
         readAllData = repository.readAllData
     }
 
-    fun addStats(statsRoom: Stats_Room){
-
-        //выполняем в фоновом потоке
+    fun addStats(statsRoom: Stats_Room) {
+        //в фоновом потоке
         viewModelScope.launch(Dispatchers.IO) {
             repository.addStats(statsRoom)
         }
     }
-
 }

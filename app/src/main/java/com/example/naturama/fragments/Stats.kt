@@ -1,25 +1,23 @@
 package com.example.naturama.fragments
 
-import android.app.Application
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.naturama.R
-import com.example.naturama.database.MyApplication
+import com.example.naturama.adapters.StatsAdapter
 import com.example.naturama.database.StatsViewModel
-import com.example.naturama.database.Stats_Room
 
 
 class Stats : Fragment() {
 
+    private lateinit var mStatsViewModel: StatsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,18 +25,31 @@ class Stats : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_stats, container, false)
-        var person_button: ImageView = view.findViewById(R.id.acc)
-        person_button.setOnClickListener {
-            Toast.makeText(context?.applicationContext, "Person Statistic", Toast.LENGTH_SHORT)
-                .show()
-            //insertDataToDatabase()
-        }
 
+        try {
+            //recyclerView
+            val adapter = StatsAdapter()
+            var recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+
+            //view model
+            mStatsViewModel = ViewModelProvider(this).get(StatsViewModel::class.java)
+            mStatsViewModel.readAllData.observe(viewLifecycleOwner, Observer { stats ->
+                adapter.setData(stats)
+            })
+
+        } catch (exception: Exception) {
+            Toast.makeText(requireContext(), "Error: " + exception.message, Toast.LENGTH_LONG)
+                .show()
+        }
 
         return view
     }
 
-    /* выдаёт NullPointerException . Почему-то не может получить application. Создал для этого отдельный класс MyApplication. В манифесте 
+
+    /* выдаёт NullPointerException . Почему-то не может получить application. Создал для этого отдельный класс MyApplication. В манифесте
 
     private fun insertDataToDatabase() {
 
