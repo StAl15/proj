@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.room.fragments.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_explore"
+            app:destination="@id/explore" />
+        <action
+            android:id="@+id/action_home_to_stats"
+            app:destination="@id/stats" />
+        <action
+            android:id="@+id/action_home_to_sort"
+            app:destination="@id/sort" />
+        <action
+            android:id="@+id/action_home_to_settings"
+            app:destination="@id/settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/explore"
+        android:name="com.example.room.fragments.Explore"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" >
+        <action
+            android:id="@+id/action_explore_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_explore_to_stats"
+            app:destination="@id/stats" />
+        <action
+            android:id="@+id/action_explore_to_sort"
+            app:destination="@id/sort" />
+        <action
+            android:id="@+id/action_explore_to_settings"
+            app:destination="@id/settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/stats"
+        android:name="com.example.room.fragments.Stats"
+        android:label="fragment_stats"
+        tools:layout="@layout/fragment_stats" >
+        <action
+            android:id="@+id/action_stats_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_stats_to_explore"
+            app:destination="@id/explore" />
+        <action
+            android:id="@+id/action_stats_to_sort"
+            app:destination="@id/sort" />
+        <action
+            android:id="@+id/action_stats_to_settings"
+            app:destination="@id/settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/sort"
+        android:name="com.example.room.fragments.Sort"
+        android:label="fragment_sort"
+        tools:layout="@layout/fragment_sort" >
+        <action
+            android:id="@+id/action_sort_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_sort_to_stats"
+            app:destination="@id/stats" />
+        <action
+            android:id="@+id/action_sort_to_explore"
+            app:destination="@id/explore" />
+        <action
+            android:id="@+id/action_sort_to_settings"
+            app:destination="@id/settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.room.fragments.Settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settings_to_home"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_settings_to_sort"
+            app:destination="@id/sort" />
+        <action
+            android:id="@+id/action_settings_to_stats"
+            app:destination="@id/stats" />
+        <action
+            android:id="@+id/action_settings_to_explore"
+            app:destination="@id/explore" />
+    </fragment>
+</navigation>

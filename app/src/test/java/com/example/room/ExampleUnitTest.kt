@@ -1,4 +1,4 @@
-package com.example.naturama
+package com.example.room
 
 import org.junit.Test
 
